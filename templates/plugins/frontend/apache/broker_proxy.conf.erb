@@ -66,6 +66,7 @@ TraceEnable off
     <% scope.lookupvar("::openshift_origin::broker_reverseproxy_ips").each do |proxyhosts| -%>
     Allow from <%= proxyhosts %>
     <% end -%> 
+    Allow from 127.0.0.1
 </Proxy>
 <% else %>
 RequestHeader unset X-Remote-User
