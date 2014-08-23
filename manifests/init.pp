@@ -623,7 +623,6 @@
 #  Node. Use this to reduce Watchman's GearStatePlugin's impact on the system.
 #  Default:  0
 #
->>>>>>> 8f39d20... Add custom motd option
 # [*conf_node_custom_motd*]
 #  Define a custom MOTD to be displayed to users who connect to their gears directly. 
 #  If undef, uses the default MOTD included with the node package.

@@ -66,15 +66,17 @@ class openshift_origin::plugins::frontend::apache {
     notify  => Service['httpd'],
   }
 
-  file { 'proxy config':
-    ensure  => present,
-    path    => $httpd_proxy_path,
-    content => template($proxy_conf_template),
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    require => Package['httpd'],
-    notify  => Service['httpd'],
+  if 'broker' in $::openshift_origin::roles {
+    file { 'proxy config':
+      ensure  => present,
+      path    => $httpd_proxy_path,
+      content => template($proxy_conf_template),
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+      require => Package['httpd'],
+      notify  => Service['httpd'],
+    }
   }
   
   if $::operatingsystem == 'Fedora' and 'node' in $::openshift_origin::roles {
