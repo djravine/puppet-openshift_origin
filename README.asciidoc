@@ -640,6 +640,13 @@ External facing network device. Used for routing and traffic control setup.
 
 Default: eth0
 
+=== conf_node_public_key
+=== conf_node_private_key
+Public and private keys used for gears on the default domain
+
+Default:  Self signed keys are generated. 
+
+
 ==== conf_node_supplementary_posix_groups
 Name of supplementary UNIX group to add a gear to.
 

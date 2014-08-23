@@ -247,4 +247,33 @@ class openshift_origin::node {
     group   => 'root',
     mode    => '0644',
   }
+  
+
+  if $::openshift_origin::conf_node_public_key != undef {
+    file { 'node public key':
+      ensure  => present,
+      path    => '/etc/pki/tls/certs/localhost.crt',
+      content => $::openshift_origin::conf_node_public_key,
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0600',
+      require => Package['httpd'],
+      notify  => Service['httpd'],
+    }
+  }    
+
+  if $::openshift_origin::conf_node_private_key != undef {    
+    file { 'node private key':
+      ensure  => present,
+      path    => '/etc/pki/tls/private/localhost.key',
+      content => $::openshift_origin::conf_node_private_key,
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0600',
+      require => Package['httpd'],
+      notify  => Service['httpd'],
+    }
+  }
+
+  
 }
