@@ -727,13 +727,11 @@
 #   * ruby
 #
 #   Default: undef
-=======
 # [*update_network_conf_files*]
 #   Indicate whether or not this module will configure resolv.conf and
 #   network for you. 
 #
 #  Default: true
->>>>>>> 7a6ac34... Add update_network_conf_files option
 #
 # == Manual Tasks
 #
