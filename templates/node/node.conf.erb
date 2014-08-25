@@ -43,6 +43,6 @@ CONTAINERIZATION_PLUGIN=openshift-origin-container-<%= scope.lookupvar('::opensh
 
 REPORT_BUILD_ANALYTICS=false
 
-<% if scope.lookupvar('::openshift_origin::conf_node_custom_motd') != undef -%>
+<% if scope.lookupvar('::openshift_origin::conf_node_custom_motd') -%>
 MOTD_FILE="/etc/openshift/welcome.rhcsh"                   # Change the default rhcs welcome message
 <% end -%>

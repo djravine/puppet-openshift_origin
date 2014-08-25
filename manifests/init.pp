@@ -605,6 +605,25 @@
 #  Node. Use this to reduce Watchman's GearStatePlugin's impact on the system.
 #  Default:  0
 #
+#
+# [*conf_node_watchman_retrydelay*]
+#  Number of seconds to wait before accepting another gear restart
+#  Default: 300
+#
+# [*conf_node_watchman_retryperiod*]
+#  Number of seconds to wait before resetting retries
+#  Default: 28800
+#
+# [*conf_node_watchman_statechangedelay*]
+#  Number of seconds a gear must remain inconsistent with it's state before Watchman attempts to reset state
+#  Default: 900
+#
+# [*conf_node_watchman_statecheckperiod*]
+#  Wait at least this number of seconds since last check before checking gear state on the
+#  Node. Use this to reduce Watchman's GearStatePlugin's impact on the system.
+#  Default:  0
+#
+>>>>>>> 8f39d20... Add custom motd option
 # [*conf_node_custom_motd*]
 #  Define a custom MOTD to be displayed to users who connect to their gears directly. 
 #  If undef, uses the default MOTD included with the node package.
