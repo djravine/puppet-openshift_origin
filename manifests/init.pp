@@ -721,6 +721,13 @@
 #   * ruby
 #
 #   Default: undef
+=======
+# [*update_network_conf_files*]
+#   Indicate whether or not this module will configure resolv.conf and
+#   network for you. 
+#
+#  Default: true
+>>>>>>> 7a6ac34... Add update_network_conf_files option
 #
 # == Manual Tasks
 #
@@ -893,7 +900,7 @@ class openshift_origin (
                                           'python','ruby','jenkins','jenkins-client','mariadb'],
   $install_cartridges_recommended_deps  = ['all'],
   $install_cartridges_optional_deps     = undef,
-  $update_conf_files                    = true,
+  $update_network_conf_files            = true,
   $manage_firewall                      = true,
 ){
   include openshift_origin::role
