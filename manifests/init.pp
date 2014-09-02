@@ -390,6 +390,16 @@
 #   for every node in the deployment (this is the default behavior, which protects
 #   scalable apps from single points of failure at the Node level).
 #
+#
+# [*conf_broker_default_templates*]
+#   Customize default app templates for specified framework cartridges.
+#   Space-separated list of elements <cartridge-name>|<git url> - URLs must be available for all nodes.
+#   URL will be cloned as the git repository for the cartridge at app creation unless the user specifies their own.
+#   e.g.: DEFAULT_APP_TEMPLATES=php-5.3|http://example.com/php.git perl-5.10|file:///etc/openshift/cart.conf.d/templates/perl.git
+#   WARNING: do not include private credentials in any URL; they would be visible in every app's cloned repository.
+#
+#   Default: ''
+#
 # [*conf_console_product_logo*]
 #   Relative path to product logo URL
 #   Default: '/assets/logo-origin.svg'
@@ -877,6 +887,7 @@ class openshift_origin (
   $conf_broker_require_zones            = false,
   $conf_broker_zone_min_gear_group      = '1',
   $conf_broker_multi_haproxy_per_node   = false,
+  $conf_broker_default_templates        = '',
   $conf_console_product_logo            = '/assets/logo-origin.svg',
   $conf_console_product_title           = 'OpenShift Origin',
   $conf_console_session_secret          = undef,
