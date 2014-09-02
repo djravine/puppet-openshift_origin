@@ -170,7 +170,7 @@ ALLOW_ALIAS_IN_DOMAIN="false"
 # URL will be cloned as the git repository for the cartridge at app creation unless the user specifies their own.
 # e.g.: DEFAULT_APP_TEMPLATES=php-5.3|http://example.com/php.git perl-5.10|file:///etc/openshift/cart.conf.d/templates/perl.git
 # WARNING: do not include private credentials in any URL; they would be visible in every app's cloned repository.
-DEFAULT_APP_TEMPLATES=
+DEFAULT_APP_TEMPLATES=<%= scope.lookupvar('::openshift_origin::conf_broker_default_templates') %>
 
 # List the node platforms available on the cloud
 # Comma-separated list of node platforms (e.g.:linux,windows).

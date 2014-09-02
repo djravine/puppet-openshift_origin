@@ -508,6 +508,15 @@ same on all broker nodes.
 Default:  Self signed keys are generated. Will not work with multi-broker 
           setup.
 
+=== conf_broker_default_templates
+Customize default app templates for specified framework cartridges.
+Space-separated list of elements <cartridge-name>|<git url> - URLs must be available for all nodes.
+URL will be cloned as the git repository for the cartridge at app creation unless the user specifies their own.
+e.g.: DEFAULT_APP_TEMPLATES=php-5.3|http://example.com/php.git perl-5.10|file:///etc/openshift/cart.conf.d/templates/perl.git
+WARNING: do not include private credentials in any URL; they would be visible in every app's cloned repository.
+
+Default: ''
+
 ==== conf_console_product_logo
 Relative path to product logo URL
 
