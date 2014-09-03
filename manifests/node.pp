@@ -90,6 +90,12 @@ class openshift_origin::node {
       mode    => '0644',
     }
 
+    exec { 'disable server signature':
+      command   => 'sed -i "s/ServerSignature On/ServerSignature off/g" /etc/httpd/conf/httpd.conf',
+      unless    => 'grep -Fxq "ServerSignature off" /etc/httpd/conf/httpd.conf',
+      notify  => Service["httpd"],
+    }
+
     file { 'custom error page config':
       ensure  => present,
       path    => '/etc/httpd/conf.d/openshift/node_error.conf',
@@ -246,13 +252,6 @@ class openshift_origin::node {
         }
     }
 
-  file { ['/var/lib/openshift/']:
-    ensure  => 'directory',
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0751',
-  }
-  
   file { ['/var/lib/openshift/.settings','/etc/openshift/env/']:
     ensure  => 'directory',
     owner   => 'root',
