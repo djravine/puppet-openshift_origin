@@ -229,7 +229,7 @@ class openshift_origin::broker {
   if $::openshift_origin::conf_broker_usage_url == undef {
     cron { 'sync usage':
         ensure  => 'present',
-        command => "oo-admin-ctl-usage --list > /tmp/oo-usage && res=$(curl -sL -w '%{http_code}' -F file=/tmp/oo-usage $::openshift_origin::conf_broker_usage_url -o /dev/null) && if [ $res -eq 201 ]; then oo-admin-ctl-usage --sync; fi",
+        command => "oo-admin-ctl-usage --list > /tmp/oo-usage && res=$(curl -sL -w '%{http_code}' -F file=@/tmp/oo-usage $::openshift_origin::conf_broker_usage_url -o /dev/null) && if [ $res -eq 201 ]; then oo-admin-ctl-usage --sync; fi",
         user => 'root', 
         hour => $::openshift_origin::conf_broker_usage_hour,
         minute => $::openshift_origin::conf_broker_usage_minute,
