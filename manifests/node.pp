@@ -79,6 +79,28 @@ class openshift_origin::node {
       mode    => '0644',
     }
   }
+  if $::openshift_origin::conf_node_error_page != undef {
+    file { 'custom error page file':
+      ensure  => present,
+      path    => '/var/www/html/error',
+      content => $::openshift_origin::conf_node_error_page,
+      require => Package['rubygem-openshift-origin-node'],
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+    }
+
+    file { 'custom error page config':
+      ensure  => present,
+      path    => '/etc/httpd/conf.d/openshift/node_error.conf',
+	  content => template('openshift_origin/plugins/frontend/apache/node_error.conf.erb'),
+      require => Package['rubygem-openshift-origin-node'],
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+      notify  => Service['httpd'],
+    }
+  }
   exec { 'Initialize quota DB':
     command => '/usr/sbin/oo-init-quota',
     require => Package['openshift-origin-node-util'],

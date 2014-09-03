@@ -638,6 +638,12 @@
 #  If undef, uses the default MOTD included with the node package.
 #  Default: undef
 #
+# [*conf_node_error_page*]
+#   Define custom error page content for applications (rather than the default Apache
+#   error content packaged with the distribution.
+#   If undef, the default error page is used
+#   Default:undef
+#
 # [*development_mode*]
 #   Set development mode and extra logging.
 #   Default: false
@@ -921,6 +927,7 @@ class openshift_origin (
   $conf_node_watchman_statechangedelay  = '900',
   $conf_node_watchman_statecheckperiod  = '0',
   $conf_node_custom_motd                = undef,
+  $conf_node_error_page					= undef,
   $development_mode                     = false,
   $conf_nameserver_upstream_dns         = ['8.8.8.8'],
   $install_login_shell                  = false,
