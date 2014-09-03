@@ -79,11 +79,11 @@ class openshift_origin::node {
       mode    => '0644',
     }
   }
-  if $::openshift_origin::conf_node_error_page != undef {
+  if $::openshift_origin::conf_node_custom_error_page {
     file { 'custom error page file':
       ensure  => present,
-      path    => '/var/www/html/error',
-      content => $::openshift_origin::conf_node_error_page,
+      path    => '/var/www/html/error_page',
+      content => template('openshift_origin/node/error_page.erb'),
       require => Package['rubygem-openshift-origin-node'],
       owner   => 'root',
       group   => 'root',
@@ -93,7 +93,7 @@ class openshift_origin::node {
     file { 'custom error page config':
       ensure  => present,
       path    => '/etc/httpd/conf.d/openshift/node_error.conf',
-	  content => template('openshift_origin/plugins/frontend/apache/node_error.conf.erb'),
+  	  content => template('openshift_origin/plugins/frontend/apache/node_error.conf.erb'),
       require => Package['rubygem-openshift-origin-node'],
       owner   => 'root',
       group   => 'root',

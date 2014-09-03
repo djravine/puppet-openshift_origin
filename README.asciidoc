@@ -738,12 +738,12 @@ If undef, uses the default MOTD included with the node package.
 
 Default: undef
 
-=== conf_node_error_page
+=== conf_node_custom_error_page
 Define custom error page content for applications (rather than the default Apache
 error content packaged with the distribution.
 If undef, the default error page is used
 
-Default:undef
+Default: false
 
 ==== development_mode
 Set development mode and extra logging.
