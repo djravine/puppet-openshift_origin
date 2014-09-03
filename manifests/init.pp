@@ -441,6 +441,19 @@
 # 
 #  Default: 1
 #
+# [*conf_broker_usage_url*]
+#  If defined, the URL which to post the contents of oo-admin-ctl-usage --list
+#  
+#  Default: undef
+#
+#  [*conf_broker_usage_hour*]
+#   The hour at which to run the broker usage command
+#   Default: 0
+#
+#  [*conf_broker_usage_minute*]
+#   The minute at which to run the broker usage command
+#   Default: 0
+#
 # [*conf_valid_gear_sizes*]
 #   List of all gear sizes this will be used in this OpenShift installation.
 #   Default: ['small']
@@ -894,6 +907,9 @@ class openshift_origin (
   $conf_broker_zone_min_gear_group      = '1',
   $conf_broker_multi_haproxy_per_node   = false,
   $conf_broker_default_templates        = '',
+  $conf_broker_usage_url                = undef,
+  $conf_broker_usage_hour               = '0',
+  $conf_broker_usage_minute             = '0',
   $conf_console_product_logo            = '/assets/logo-origin.svg',
   $conf_console_product_title           = 'OpenShift Origin',
   $conf_console_session_secret          = undef,
