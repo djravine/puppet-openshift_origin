@@ -1,6 +1,6 @@
 <%
   carts = scope.lookupvar('::openshift_origin::install_cartridges')
-  
+
   php   = 'php-5' if carts.include? 'php'
   mysql = 'mysql-5' if carts.include? 'mysql'
   mysql = 'mariadb' if carts.include? 'mariadb'
@@ -187,7 +187,7 @@
     }
         <% req_comma = true %>
     <% end %>
-    <% if !php.nil? && !mysql.nill? %>
+    <% if !php.nil? && !mysql.nil? %>
         <%="," if req_comma %>
     {
         "quickstart": {
@@ -203,7 +203,7 @@
     }
         <% req_comma = true %>
     <% end %>
-    <% if !php.nil? && !mysql.nill? %>
+    <% if !php.nil? && !mysql.nil? %>
         <%="," if req_comma %>
     {
         "quickstart": {
@@ -218,7 +218,8 @@
         }
     }
         <% req_comma = true %>
-    <% if !php.nil? && !mysql.nill? %>
+    <% end %>
+    <% if !php.nil? && !mysql.nil? %>
         <%="," if req_comma %>
     {
         "quickstart": {
@@ -234,7 +235,7 @@
     }
         <% req_comma = true %>
     <% end %>
-    <% if !ruby.nil? && !mysql.nill? %>
+    <% if !ruby.nil? && !mysql.nil? %>
         <%="," if req_comma %>
     {
         "quickstart": {
