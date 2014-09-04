@@ -7,6 +7,8 @@
   jbossas = 'jbossas' if carts.include? 'jbossas'
   python27 = 'python-2.7' if carts.include? 'python'
   ruby = 'ruby' if carts.include? 'ruby'
+  nodejs = 'nodejs' if carts.include? 'nodejs'
+  mongodb = 'mongodb' if carts.include? 'mongodb'
 
   req_comma = false
 %>
@@ -106,4 +108,226 @@
     }
         <% req_comma = true %>
     <% end %>
+    <% if !jbossas.nil? && !mysql.nil? %>
+        <%="," if req_comma %>
+    {
+        "quickstart": {
+            "id": "9",
+            "name": "AeroGear Push ",
+            "website": "http://aerogear.org",
+            "cartridges": ["https://reflector-ausnimbus.ausnimbus.net/reflect?github=aerogear/openshift-origin-cartridge-aerogear-push#AeroGear", "<%= mysql %>"],
+            "summary": "The AeroGear UnifiedPush Server allows for sending native push messages to different mobile operation systems. \nThis initial community version of the server supports Apple’s Push Notification Service (APNs), Google Cloud Messaging (GCM) and Mozilla’s SimplePush. It has a built in administrative console that makes it easy for developers of any type to create and manage push related aspects of their applications.",
+            "tags": ["java", "messaging", "not_scalable", "instant_app"],
+            "admin_tags": []
+        }
+    }
+        <% req_comma = true %>
+    <% end %>
+    <% if !php.nil? && !mysql.nil? %>
+        <%="," if req_comma %>
+    {
+        "quickstart": {
+            "id": "10",
+            "name": "Cacti",
+            "website": "http://www.cacti.net/",
+            "initial_git_url": "git://github.com/openshift-quickstart/openshift-cacti-quickstart.git",
+            "cartridges": ["<%= php %>", "<%= mysql %>", "cron"],
+            "summary": "Cacti is a complete network graphing solution designed to harness the power of RRDTool's data storage and graphing functionality. Cacti provides a fast poller, advanced graph templating, multiple data acquisition methods, and user management features out of the box. All of this is wrapped in an intuitive, easy to use interface that makes sense for LAN-sized installations up to complex networks with hundreds of devices.",
+            "tags": ["php", "instant_app", "not_scalable"],
+            "admin_tags": []
+        }
+    }
+        <% req_comma = true %>
+    <% end %>
+    <% if !nodejs.nil? && !mysql.nil? %>
+        <%="," if req_comma %>
+    {
+        "quickstart": {
+            "id": "11",
+            "name": "Ghost with MySQL",
+            "website": "http://tryghost.org/",
+            "initial_git_url": "git://github.com/openshift-quickstart/openshift-ghost-mysql-quickstart.git",
+            "cartridges": ["<%= nodejs %>", "<%= mysql %>"],
+            "summary": "Ghost is a free, open, simple blogging platform that's available to anyone who wants to use it. \n After installing via this quickstart, you need to run these commands\n rhc set-env NODE_ENV=production --app $appname \n rhc app restart $appname\n Where $appname is the name of your application\n Or you can create your application from the command line with this command:\n rhc app create ghost nodejs-0.10 mysql-5.1 --env NODE_ENV=production --from-code https://github.com/openshift-quickstart/openshift-ghost-mysql-quickstart.git",
+            "tags": ["node.js", "ghost", "blog"],
+            "admin_tags": []
+        }
+    }
+        <% req_comma = true %>
+    <% end %>
+    <% if !ruby.nil? && !mysql.nil? %>
+        <%="," if req_comma %>
+    {
+        "quickstart": {
+            "id": "12",
+            "name": "Fedena",
+            "website": "http://www.projectfedena.org/",
+            "initial_git_url": "git://github.com/maninc/fedena.git",
+            "cartridges": ["<%= ruby %>", "<%= mysql %>"],
+            "summary": "Project Fedena is the open source school management system based on Ruby on Rails. It was initially developed by a team of developers at Foradian Technologies. The project was made open source by Foradian, and is now maintained by the open source community.",
+            "tags": ["rails", "ruby", "instant_app"],
+            "admin_tags": []
+        }
+    }
+        <% req_comma = true %>
+    <% end %>
+    <% if !php.nil? %>
+        <%="," if req_comma %>
+    {
+        "quickstart": {
+            "id": "13",
+            "name": "Doku Wiki",
+            "website": "https://www.dokuwiki.org/dokuwiki",
+            "initial_git_url": "git://github.com/openshift/dokuwiki-quickstart.git",
+            "cartridges": ["<%= php %>"],
+            "summary": "DokuWiki is a simple to use and highly versatile Open Source wiki software that doesn't require a database. It is loved by users for its clean and readable syntax. The ease of maintenance, backup and integration makes it an administrator's favorite. Built in access controls and authentication connectors make DokuWiki especially useful in the enterprise context and the large number of plugins contributed by its vibrant community allow for a broad range of use cases beyond a traditional wiki.",
+            "tags": ["php", "instant_app", "not_scalable"],
+            "admin_tags": []
+        }
+    }
+        <% req_comma = true %>
+    <% end %>
+    <% if !php.nil? && !mysql.nill? %>
+        <%="," if req_comma %>
+    {
+        "quickstart": {
+            "id": "14",
+            "name": "Magento Community Edition",
+            "website": "http://www.magentocommerce.com/",
+            "initial_git_url": "git://github.com/openshift/magento-example.git",
+            "cartridges": ["<%= php %>", "<%= mysql %>"],
+            "summary": "Magento is an open source e-commerce web application. It offers flexible, scalable eCommerce solutions designed to help businesses grow and succeed online. The Magento platform is trusted by more than 150,000 businesses, including some of the world's leading brands.\n Magento allows for features including flexible product display options, mobile templates, transaction options, multi-store and multi-site functionality, user accounts and loyalty programs, product categorisation and shopper filtering, and discount and promotion rules.",
+            "tags": ["php", "instant_app"],
+            "admin_tags": []
+        }
+    }
+        <% req_comma = true %>
+    <% end %>
+    <% if !php.nil? && !mysql.nill? %>
+        <%="," if req_comma %>
+    {
+        "quickstart": {
+            "id": "15",
+            "name": "Laravel 4.1",
+            "website": "http://laravel.com/",
+            "initial_git_url": "git://github.com/muffycompo/openshift-laravel4-quickstart-app.git",
+            "cartridges": ["<%= php %>", "<%= mysql %>"],
+            "summary": "Laravel is a PHP web application framework with expressive, elegant syntax. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.",
+            "tags": ["php", "instant_app"],
+            "admin_tags": []
+        }
+    }
+        <% req_comma = true %>
+    <% if !php.nil? && !mysql.nill? %>
+        <%="," if req_comma %>
+    {
+        "quickstart": {
+            "id": "16",
+            "name": "CodeIgniter",
+            "website": "https://ellislab.com/codeigniter",
+            "initial_git_url": "git://github.com/openshift/CodeIgniterQuickStart.git",
+            "cartridges": ["<%= php %>", "<%= mysql %>"],
+            "summary": "CodeIgniter is a powerful PHP framework with a very small footprint, built for PHP coders who need a simple and elegant toolkit to create full-featured web applications. \n Get up and running quickly with a CodeIgniter installation on OpenShift's platform-as-a-service. The backend database is MySQL and the database name is the same as your application name (using $_ENV['OPENSHIFT_APP_NAME']).",
+            "tags": ["php", "instant_app"],
+            "admin_tags": []
+        }
+    }
+        <% req_comma = true %>
+    <% end %>
+    <% if !ruby.nil? && !mysql.nill? %>
+        <%="," if req_comma %>
+    {
+        "quickstart": {
+            "id": "17",
+            "name": "Redmine 2.4",
+            "website": "https://www.redmine.org/",
+            "initial_git_url": "git://github.com/openshift/openshift-redmine-quickstart.git",
+            "cartridges": ["<%= ruby %>", "<%= mysql %>"],
+            "summary": "Redmine is a flexible project management web application. Written using the Ruby on Rails framework, it is cross-platform and cross-database.",
+            "tags": ["ruby", "instant_app", "not_scalable"],
+            "admin_tags": []
+        }
+    }
+        <% req_comma = true %>
+    <% end %>
+    <% if !nodejs.nil? %>
+        <%="," if req_comma %>
+    {
+        "quickstart": {
+            "id": "18",
+            "name": "Reveal.JS Slides",
+            "website": "http://lab.hakim.se/reveal-js/",
+            "initial_git_url": "git://github.com/ryanj/reveal.js.git",
+            "cartridges": ["<%= nodejs %>"],
+            "summary": "A framework for easily creating beautiful presentations using HTML. \n This quickstart takes advantage of nodejs and Reveal.js to help you create your own open source slideshow presentations.\n It also includes optional support for broadcasting your slide presentations live on the web via an OpenShift websocket relay.\n Take a look at this post for additional specifics on how to use this QuickStart project: 
+Broadcast Your Slideshow Presentations with Socket.io and Reveal.js.",
+            "tags": ["nodejs", "instant_app"],
+            "admin_tags": []
+        }
+    }
+        <% req_comma = true %>
+    <% end %>
+    <% if !php.nil? && !mysql.nil? %>
+        <%="," if req_comma %>
+    {
+        "quickstart": {
+            "id": "19",
+            "name": "Symfony 2.3.6",
+            "website": "http://symfony.com/",
+            "initial_git_url": "git://github.com/hasinhayder/openshift-symfony-2.3.0.git",
+            "cartridges": ["<%= php %>", "<%= mysql %>"],
+            "summary": "Symfony is a PHP web framework. This is a boilerplate Symfony 2.3.6 container with all the necessary hooks and it is fully automated.",
+            "tags": ["php", "instant_app"],
+            "admin_tags": []
+        }
+    }
+        <% req_comma = true %>
+    <% end %>
+    <% if !php.nil? && !mysql.nil? %>
+        <%="," if req_comma %>
+    {
+        "quickstart": {
+            "id": "20",
+            "name": "ownCloud",
+            "website": "http://owncloud.org/",
+            "initial_git_url": "git://github.com/openshift/owncloud-openshift-quickstart.git",
+            "cartridges": ["<%= php %>", "<%= mysql %>", "cron"],
+            "summary": "ownCloud is a flexible, open source file sync and share solution. Whether using a mobile device, a workstation, or a web client, ownCloud provides the ability to put the right files at their users’ fingertips on any device in one simple-to-use, secure, private and controlled solution. \n Think of ownCloud as a way to roll your own Google Drive or Dropbox on-premise solution.\n The default username and password should be printed out to the web console after deployment. Please change the default password after first login.",
+            "tags": ["php", "instant_app", "not_scalable"],
+            "admin_tags": []
+        }
+    }
+        <% req_comma = true %>
+    <% end %>
+    <% if !nodejs.nil? && !mongodb.nil? %>
+        <%="," if req_comma %>
+    {
+        "quickstart": {
+            "id": "21",
+            "name": "Uptime Monitor",
+            "website": "https://github.com/rkmallik/uptime-openshift",
+            "initial_git_url": "git://github.com/rkmallik/uptime-openshift.git",
+            "cartridges": ["<%= nodejs %>", "<%= mongodb %>"],
+            "summary": "Monitor thousands of websites (powered by Node.js asynchronous programming)\n Tweak frequency of monitoring on a per-check basis, up to the second 
+Check the presence of a pattern in the response body\n Receive notifications whenever a check goes down",
+            "tags": ["node.js", "instant_app", "not_scalable"],
+            "admin_tags": []
+        }
+    }
+        <% req_comma = true %>
+    <% end %>
+        <%="," if req_comma %>
+    {
+        "quickstart": {
+            "id": "22",
+            "name": "Go Language",
+            "website": "http://golang.org/",
+            "initial_git_url": "git://github.com/rkmallik/uptime-openshift.git",
+            "cartridges": ["https://reflector-ausnimbus.ausnimbus.net/github/smarterclayton/openshift-go-cart#golang"],
+            "summary": "A web framework cartridge for the Go language, supporting the high performance compiled language. Downloads the latest Go 1.1 distribution into your repository which may take several minutes. \n An example application is included - change the ".godir" file in your source repository to define your own package.",
+            "tags": ["golang"],
+            "admin_tags": []
+        }
+    }
+        <% req_comma = true %>
 ]
