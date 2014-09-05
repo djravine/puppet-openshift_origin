@@ -81,11 +81,11 @@
     {
         "quickstart": {
             "id": "6",
-            "name": "Ruby on Rails",
+            "name": "Ruby on Rails 3",
             "website": "http://rubyonrails.org/",
             "initial_git_url": "git://github.com/openshift/rails-example.git",
             "cartridges": ["<%= ruby %>", "<%= mysql %>"],
-            "summary": "An open source web framework for Ruby that is optimized for programmer happiness and sustainable productivity. It lets you write beautiful code by favoring convention over configuration.",
+            "summary": "An open source web framework for Ruby that is optimized for programmer happiness and sustainable productivity. It lets you write beautiful code by favoring convention over configuration.\n There are some special considerations you may need to keep in mind when running your application on OpenShift. Check out https://github.com/openshift/rails4-example for the full list.",
             "tags": ["ruby", "rails", "framework"],
             "admin_tags": []
         }
@@ -123,22 +123,6 @@
     }
         <% req_comma = true %>
     <% end %>
-    <% if !php.nil? && !mysql.nil? %>
-        <%="," if req_comma %>
-    {
-        "quickstart": {
-            "id": "10",
-            "name": "Cacti",
-            "website": "http://www.cacti.net/",
-            "initial_git_url": "git://github.com/openshift-quickstart/openshift-cacti-quickstart.git",
-            "cartridges": ["<%= php %>", "<%= mysql %>", "cron"],
-            "summary": "Cacti is a complete network graphing solution designed to harness the power of RRDTool's data storage and graphing functionality. Cacti provides a fast poller, advanced graph templating, multiple data acquisition methods, and user management features out of the box. All of this is wrapped in an intuitive, easy to use interface that makes sense for LAN-sized installations up to complex networks with hundreds of devices.",
-            "tags": ["php", "instant_app", "not_scalable"],
-            "admin_tags": []
-        }
-    }
-        <% req_comma = true %>
-    <% end %>
     <% if !nodejs.nil? && !mysql.nil? %>
         <%="," if req_comma %>
     {
@@ -149,23 +133,7 @@
             "initial_git_url": "git://github.com/openshift-quickstart/openshift-ghost-mysql-quickstart.git",
             "cartridges": ["<%= nodejs %>", "<%= mysql %>"],
             "summary": "Ghost is a free, open, simple blogging platform that's available to anyone who wants to use it. \n After installing via this quickstart, you need to run these commands\n rhc set-env NODE_ENV=production --app $appname \n rhc app restart $appname\n Where $appname is the name of your application\n Or you can create your application from the command line with this command:\n rhc app create ghost nodejs-0.10 mysql-5.1 --env NODE_ENV=production --from-code https://github.com/openshift-quickstart/openshift-ghost-mysql-quickstart.git",
-            "tags": ["node.js", "ghost", "blog"],
-            "admin_tags": []
-        }
-    }
-        <% req_comma = true %>
-    <% end %>
-    <% if !ruby.nil? && !mysql.nil? %>
-        <%="," if req_comma %>
-    {
-        "quickstart": {
-            "id": "12",
-            "name": "Fedena",
-            "website": "http://www.projectfedena.org/",
-            "initial_git_url": "git://github.com/maninc/fedena.git",
-            "cartridges": ["<%= ruby %>", "<%= mysql %>"],
-            "summary": "Project Fedena is the open source school management system based on Ruby on Rails. It was initially developed by a team of developers at Foradian Technologies. The project was made open source by Foradian, and is now maintained by the open source community.",
-            "tags": ["rails", "ruby", "instant_app"],
+            "tags": ["node.js", "ghost", "blog", "instant_app"],
             "admin_tags": []
         }
     }
@@ -197,7 +165,7 @@
             "initial_git_url": "git://github.com/openshift/magento-example.git",
             "cartridges": ["<%= php %>", "<%= mysql %>"],
             "summary": "Magento is an open source e-commerce web application. It offers flexible, scalable eCommerce solutions designed to help businesses grow and succeed online. The Magento platform is trusted by more than 150,000 businesses, including some of the world's leading brands.\n Magento allows for features including flexible product display options, mobile templates, transaction options, multi-store and multi-site functionality, user accounts and loyalty programs, product categorisation and shopper filtering, and discount and promotion rules.",
-            "tags": ["php", "instant_app"],
+            "tags": ["php", "framework", "magento"],
             "admin_tags": []
         }
     }
@@ -213,7 +181,7 @@
             "initial_git_url": "git://github.com/muffycompo/openshift-laravel4-quickstart-app.git",
             "cartridges": ["<%= php %>", "<%= mysql %>"],
             "summary": "Laravel is a PHP web application framework with expressive, elegant syntax. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.",
-            "tags": ["php", "instant_app"],
+            "tags": ["php", "framework", "laravel"],
             "admin_tags": []
         }
     }
@@ -229,7 +197,7 @@
             "initial_git_url": "git://github.com/openshift/CodeIgniterQuickStart.git",
             "cartridges": ["<%= php %>", "<%= mysql %>"],
             "summary": "CodeIgniter is a powerful PHP framework with a very small footprint, built for PHP coders who need a simple and elegant toolkit to create full-featured web applications. \n Get up and running quickly with a CodeIgniter installation on OpenShift's platform-as-a-service. The backend database is MySQL and the database name is the same as your application name (using $_ENV['OPENSHIFT_APP_NAME']).",
-            "tags": ["php", "instant_app"],
+            "tags": ["php", "framework", "codeigniter"],
             "admin_tags": []
         }
     }
@@ -260,8 +228,7 @@
             "website": "http://lab.hakim.se/reveal-js/",
             "initial_git_url": "git://github.com/ryanj/reveal.js.git",
             "cartridges": ["<%= nodejs %>"],
-            "summary": "A framework for easily creating beautiful presentations using HTML. \n This quickstart takes advantage of nodejs and Reveal.js to help you create your own open source slideshow presentations.\n It also includes optional support for broadcasting your slide presentations live on the web via an OpenShift websocket relay.\n Take a look at this post for additional specifics on how to use this QuickStart project: 
-Broadcast Your Slideshow Presentations with Socket.io and Reveal.js.",
+            "summary": "A framework for easily creating beautiful presentations using HTML. \n This quickstart takes advantage of nodejs and Reveal.js to help you create your own open source slideshow presentations.\n It also includes optional support for broadcasting your slide presentations live on the web via an OpenShift websocket relay.\n Take a look at this post for additional specifics on how to use this QuickStart project: \n Broadcast Your Slideshow Presentations with Socket.io and Reveal.js.",
             "tags": ["nodejs", "instant_app"],
             "admin_tags": []
         }
@@ -278,7 +245,7 @@ Broadcast Your Slideshow Presentations with Socket.io and Reveal.js.",
             "initial_git_url": "git://github.com/hasinhayder/openshift-symfony-2.3.0.git",
             "cartridges": ["<%= php %>", "<%= mysql %>"],
             "summary": "Symfony is a PHP web framework. This is a boilerplate Symfony 2.3.6 container with all the necessary hooks and it is fully automated.",
-            "tags": ["php", "instant_app"],
+            "tags": ["php", "framework", "symfony"],
             "admin_tags": []
         }
     }
@@ -300,23 +267,6 @@ Broadcast Your Slideshow Presentations with Socket.io and Reveal.js.",
     }
         <% req_comma = true %>
     <% end %>
-    <% if !nodejs.nil? && !mongodb.nil? %>
-        <%="," if req_comma %>
-    {
-        "quickstart": {
-            "id": "21",
-            "name": "Uptime Monitor",
-            "website": "https://github.com/rkmallik/uptime-openshift",
-            "initial_git_url": "git://github.com/rkmallik/uptime-openshift.git",
-            "cartridges": ["<%= nodejs %>", "<%= mongodb %>"],
-            "summary": "Monitor thousands of websites (powered by Node.js asynchronous programming)\n Tweak frequency of monitoring on a per-check basis, up to the second 
-Check the presence of a pattern in the response body\n Receive notifications whenever a check goes down",
-            "tags": ["node.js", "instant_app", "not_scalable"],
-            "admin_tags": []
-        }
-    }
-        <% req_comma = true %>
-    <% end %>
         <%="," if req_comma %>
     {
         "quickstart": {
@@ -325,10 +275,27 @@ Check the presence of a pattern in the response body\n Receive notifications whe
             "website": "http://golang.org/",
             "initial_git_url": "git://github.com/rkmallik/uptime-openshift.git",
             "cartridges": ["https://reflector-ausnimbus.ausnimbus.net/github/smarterclayton/openshift-go-cart#golang"],
-            "summary": "A web framework cartridge for the Go language, supporting the high performance compiled language. Downloads the latest Go 1.1 distribution into your repository which may take several minutes. \n An example application is included - change the ".godir" file in your source repository to define your own package.",
+            "summary": "A web framework cartridge for the Go language, supporting the high performance compiled language. Downloads the latest Go 1.1 distribution into your repository which may take several minutes. \n An example application is included - change the '.godir' file in your source repository to define your own package.",
             "tags": ["golang"],
             "admin_tags": []
         }
     }
         <% req_comma = true %>
+    <% if !ruby.nil? && !mysql.nil? %>
+        <%="," if req_comma %>
+    {
+        "quickstart": {
+            "id": "23",
+            "name": "Ruby on Rails 4",
+            "website": "http://rubyonrails.org/",
+            "initial_git_url": "git://github.com/openshift/rails4-example.git",
+            "cartridges": ["<%= ruby %>", "<%= mysql %>"],
+            "summary": "An open source web framework for Ruby that is optimized for programmer happiness and sustainable productivity. It lets you write beautiful code by favoring convention over configuration.\n There are some special considerations you may need to keep in mind when running your application on OpenShift. Check out https://github.com/openshift/rails4-example for the full list.\n There are some special considerations you may need to keep in mind when running your application on OpenShift. Check out https://github.com/openshift/rails4-example for the full list.",
+            "tags": ["ruby", "rails", "framework"],
+            "admin_tags": []
+        }
+    }
+        <% req_comma = true %>
+    <% end %>
+
 ]
