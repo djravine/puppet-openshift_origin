@@ -736,14 +736,15 @@
 #   * ruby
 #   * jenkins
 #   * jenkins-client
-#   * mariadb         (will install mysql on RHEL)
+#   * mariadb         (for Fedora deployments)
+#   * mysql           (for CentOS / RHEL deployments)
 #   * jbossews
 #   * jbossas
 #   * jbosseap
 #
 #   Default: ['10gen-mms-agent','cron','diy','haproxy','mongodb',
 #             'nodejs','perl','php','phpmyadmin','postgresql',
-#             'python','ruby','jenkins','jenkins-client','mariadb']
+#             'python','ruby','jenkins','jenkins-client','mysql']
 #
 # [*install_cartridges_recommended_deps*]
 #   List of cartridge recommended dependencies to be installed on the node. Options:
@@ -954,10 +955,11 @@ class openshift_origin (
   $dns_infrastructure_names             = [],
   $install_cartridges                   = ['10gen-mms-agent','cron','diy','haproxy','mongodb',
                                           'nodejs','perl','php','phpmyadmin','postgresql',
-                                          'python','ruby','jenkins','jenkins-client','mariadb'],
+                                          'python','ruby','jenkins','jenkins-client','mysql'],
   $install_cartridges_recommended_deps  = ['all'],
   $install_cartridges_optional_deps     = undef,
   $update_network_conf_files            = true,
+  $update_conf_files                    = true,
   $manage_firewall                      = true,
 ){
   include openshift_origin::role
