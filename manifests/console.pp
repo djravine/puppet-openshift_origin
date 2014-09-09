@@ -20,6 +20,7 @@ class openshift_origin::console {
   include openshift_origin::selbooleans
   include openshift_origin::selbooleans::broker_console
   include openshift_origin::broker_console_dirs
+  include openshift_origin::console_theme
 
   package { 'openshift-origin-console':
     ensure  => present,
