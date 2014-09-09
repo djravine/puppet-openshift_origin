@@ -8,19 +8,16 @@ class openshift_origin::console_theme {
 
   file { '/var/www/openshift/console/app/views/layouts/_head.html.haml':
     content => template('openshift_origin/console/theme/_head.html.haml.erb'),
-    require     => Package['rubygem-openshift-origin-console'],
     notify      => Service['openshift-console'],
   }
 
   file { '/var/www/openshift/console/app/views/layouts/_footer.html.haml':
     content => template('openshift_origin/console/theme/_footer.html.haml.erb'),
-    require     => Package['rubygem-openshift-origin-console'],
     notify      => Service['openshift-console'],
   }
 
   file { '/var/www/openshift/console/app/views/layouts/_console.html.haml':
     content => template('openshift_origin/console/theme/_console.html.haml.erb'),
-    require     => Package['rubygem-openshift-origin-console'],
     notify      => Service['openshift-console'],
   }
 
@@ -30,25 +27,21 @@ class openshift_origin::console_theme {
 
   file { '/var/www/openshift/console/app/views/layouts/console/_header.html.haml':
     content => template('openshift_origin/console/theme/console/_header.html.haml.erb'),
-    require     => Package['rubygem-openshift-origin-console'],
     notify      => Service['openshift-console'],
   }
 
   file { '/var/www/openshift/console/app/views/layouts/console/_identity.html.haml':
     content => template('openshift_origin/console/theme/console/_identity.html.haml.erb'),
-    require     => Package['rubygem-openshift-origin-console'],
     notify      => Service['openshift-console'],
   }
 
   file { '/var/www/openshift/console/app/views/layouts/console/_javascripts.html.haml':
     content => template('openshift_origin/console/theme/console/_javascripts.html.haml.erb'),
-    require     => Package['rubygem-openshift-origin-console'],
     notify      => Service['openshift-console'],
   }
 
   file { '/var/www/openshift/console/app/views/layouts/console/_stylesheets.html.haml':
     content => template('openshift_origin/console/theme/console/_stylesheets.html.haml.erb'),
-    require     => Package['rubygem-openshift-origin-console'],
     notify      => Service['openshift-console'],
   }
 
