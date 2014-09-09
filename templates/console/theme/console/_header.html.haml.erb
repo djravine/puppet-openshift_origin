@@ -1,8 +1,6 @@
 .navbar.utility
   .navbar-inner
     .container
-      = link_to root_path, :class => 'brand' do
-        = product_branding
       - unless Console.config.disable_account
         %ul.nav.pull-right
           %li.dropdown.hidden-phone
