@@ -18,6 +18,7 @@ class openshift_origin::role {
   include openshift_origin::install_method
   if $::openshift_origin::manage_firewall {
     include openshift_origin::firewall::ssh
+    include openshift_origin::firewall::zabbix
   }
 
   if ( $::openshift_origin::configure_ntp ) {
