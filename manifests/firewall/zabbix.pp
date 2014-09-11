@@ -1,5 +1,5 @@
 class openshift_origin::firewall::zabbix {
-  lokkit::services{ 'ZABBIX':
+  lokkit::ports{ 'zabbix':
     tcpPorts => [ '10050', '10051' ],
   }
 }
