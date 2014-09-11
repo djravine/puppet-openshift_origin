@@ -68,11 +68,11 @@ class openshift_origin::node {
     notify      => Service["${::openshift_origin::params::ruby_scl_prefix}mcollective"], 
     refreshonly => true,
   }
-  if $::openshift_origin::conf_node_custom_motd != undef {
+  if $::openshift_origin::conf_node_custom_motd {
     file { 'custom motd file':
       ensure  => present,
       path    => '/etc/openshift/welcome.rhcsh',
-      content => $::openshift_origin::conf_node_custom_motd,
+      content => template('openshift_origin/node/motd.erb'),
       require => Package['rubygem-openshift-origin-node'],
       owner   => 'root',
       group   => 'root',
