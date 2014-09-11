@@ -130,7 +130,7 @@ class openshift_origin::broker {
       content => $::openshift_origin::conf_broker_auth_private_key,
       owner   => 'root',
       group   => 'root',
-      mode    => '0640',
+      mode    => '0644',
       require => Class['openshift_origin::broker_console_dirs'],
       notify  => Service['openshift-broker'],
     }
