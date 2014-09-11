@@ -2,7 +2,7 @@ class openshift_origin::console_theme {
 
   exec { 'update openshift console production.rb':
     command   => 'sed -i "s/config.assets.precompile += %w(common.css origin.css members_form.css console.js modernizr.min.js)/config.assets.precompile += %w(common.css origin.css members_form.css console.js modernizr.min.js style.css script.js)/g" /var/www/openshift/console/config/environments/production.rb',
-    unless    => 'grep -Fxq "config.assets.precompile += %w(common.css origin.css members_form.css console.js modernizr.min.js style.css script.js)" /var/www/openshift/console/config/environments/production.rb',
+    unless    => 'grep -c "config.assets.precompile += %w(common.css origin.css members_form.css console.js modernizr.min.js style.css script.js)" /var/www/openshift/console/config/environments/production.rb',
     notify  => Exec["Console gem dependencies"],
   }
 

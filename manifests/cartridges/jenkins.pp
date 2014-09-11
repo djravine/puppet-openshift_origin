@@ -19,5 +19,7 @@ class openshift_origin::cartridges::jenkins {
   }
   exec { '/usr/bin/yum versionlock jenkins':
     require => Package['jenkins', 'yum-plugin-versionlock'],
+    subscribe => Package['jenkins'],
+    refreshonly => true,
   }
 }

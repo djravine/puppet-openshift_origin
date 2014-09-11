@@ -18,5 +18,6 @@ class openshift_origin::selbooleans::broker_console {
     require => Package['openshift-origin-broker','openshift-origin-console'],
     notify  => Service['openshift-broker'],
     timeout => 1800,
+    refreshonly => true,
   }
 }
