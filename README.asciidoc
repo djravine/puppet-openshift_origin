@@ -734,9 +734,9 @@ Default:  0
 
 === conf_node_custom_motd
 Define a custom MOTD to be displayed to users who connect to their gears directly. 
-If undef, uses the default MOTD included with the node package.
+If false, uses the default MOTD included with the node package.
 
-Default: undef
+Default: true
 
 === conf_node_custom_error_page
 Define custom error page content for applications (rather than the default Apache

@@ -646,8 +646,8 @@
 #
 # [*conf_node_custom_motd*]
 #  Define a custom MOTD to be displayed to users who connect to their gears directly. 
-#  If undef, uses the default MOTD included with the node package.
-#  Default: undef
+#  If false, uses the default MOTD included with the node package.
+#  Default: true
 #
 # [*conf_node_custom_error_page*]
 #   Define custom error page content for applications (rather than the default Apache
@@ -939,7 +939,7 @@ class openshift_origin (
   $conf_node_watchman_retryperiod       = '28800',
   $conf_node_watchman_statechangedelay  = '900',
   $conf_node_watchman_statecheckperiod  = '0',
-  $conf_node_custom_motd                = undef,
+  $conf_node_custom_motd                = true,
   $conf_node_custom_error_page          = false,
   $development_mode                     = false,
   $conf_nameserver_upstream_dns         = ['8.8.8.8'],
