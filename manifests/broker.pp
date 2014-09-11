@@ -62,6 +62,9 @@ class openshift_origin::broker {
       '/var/www/openshift/broker/httpd/run',
       '/var/www/openshift/broker/tmp',
       '/var/www/openshift/broker/tmp/cache',
+      '/var/www/openshift/broker/tmp/sessions',
+      '/var/www/openshift/broker/tmp/pids',
+      '/var/www/openshift/broker/tmp/sockets',
     ]:
     ensure  => directory,
   }
@@ -195,16 +198,19 @@ class openshift_origin::broker {
 
   exec { 'Broker gem dependencies':
     cwd     => '/var/www/openshift/broker/',
-    command => "${::openshift_origin::params::rm} -f Gemfile.lock && ${broker_bundle_show}",
+    command => "${::openshift_origin::params::rm} -f Gemfile.lock && ${broker_bundle_show} && ${::openshift_origin::params::chown} apache:apache Gemfile.lock",
     before  => File['/var/www/openshift/broker/tmp'],
     require => [
       Package['openshift-origin-broker'],
       File['openshift broker.conf','mcollective broker plugin config'],
     ],
+    subscribe   => [
+      File['/var/www/openshift/console/Gemfile.lock'],
+    ],
     notify  => [
       Service['openshift-broker'],
-      File['/var/www/openshift/broker/Gemfile.lock'],
     ],
+    refreshonly => true,
   }
 
   # This File resource is to guarantee that the Gemfile.lock created
@@ -216,7 +222,6 @@ class openshift_origin::broker {
     group     => 'apache',
     mode      => '0644',
     require   => Package['openshift-origin-broker'],
-    subscribe => Exec['Broker gem dependencies'],
   }
 
   service { 'openshift-broker':
