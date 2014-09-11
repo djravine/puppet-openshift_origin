@@ -148,6 +148,7 @@ class openshift_origin::console {
     provider => 'shell',
     require  => Package['openshift-origin-console'],
     notify   => Service['openshift-console'],
+    refreshonly => true,
   }
 
   service { 'openshift-console':
